@@ -14,17 +14,25 @@ export function Model({mouse, props}) {
     useFrame(() => {
         if (!ref.current) return;
 
-        ref.current.rotation.y += (mouse.x * 0.3 - ref.current.rotation.y) * 0.05;
-        ref.current.rotation.x += (-mouse.y * 0.2 - ref.current.rotation.x) * 0.05;
+        ref.current.rotation.y +=
+            (mouse.x * 0.45 - ref.current.rotation.y) * 0.06;
+
+        ref.current.rotation.x +=
+            (-mouse.y * 0.25 - ref.current.rotation.x) * 0.06;
+
+        // subtle idle float
+        ref.current.position.y =
+            Math.sin(performance.now() * 0.001) * 0.015;
     });
     return (
-    <group ref={ref} {...props} dispose={null}>
-      <mesh geometry={nodes.InnerFrame.geometry} material={materials.SecondaryFrame} position={[-0.117, 0.387, -0.046]} rotation={[-Math.PI, 0, -Math.PI]} />
+      <group {...props} dispose={null}>
       <group position={[-0.121, -0.972, -0.043]} rotation={[-Math.PI, 0, -Math.PI]}>
         <mesh geometry={nodes.Cylinder003.geometry} material={materials.Glowbluestrong} />
         <mesh geometry={nodes.Cylinder003_1.geometry} material={materials.Base} />
         <mesh geometry={nodes.Cylinder003_2.geometry} material={materials['Material.002']} />
       </group>
+      <group ref={ref}>
+      <mesh geometry={nodes.InnerFrame.geometry} material={materials.SecondaryFrame} position={[-0.117, 0.387, -0.046]} rotation={[-Math.PI, 0, -Math.PI]} />
       <mesh geometry={nodes.OuterFrame2.geometry} material={materials.OuterFrame} position={[1.662, 1.22, -0.029]} rotation={[-Math.PI, 0, -Math.PI]} />
       <mesh geometry={nodes.OuterFrame1.geometry} material={materials.OuterFrame} position={[-1.914, 1.16, -0.021]} rotation={[-Math.PI, 0, -Math.PI]} />
       <mesh geometry={nodes.SCreenBaseLarge.geometry} material={materials.Base} position={[-0.12, -0.687, -0.058]} rotation={[-Math.PI, 0, -Math.PI]} />
@@ -44,7 +52,8 @@ export function Model({mouse, props}) {
       <mesh geometry={nodes.GlassGlow.geometry} material={materials.GlassBorder} position={[-0.121, 0.505, -0.056]} rotation={[-Math.PI, 0, -Math.PI]} />
       <mesh geometry={nodes.Glass.geometry} material={materials.Material} position={[-0.121, 0.505, -0.056]} rotation={[-Math.PI, 0, -Math.PI]} />
       <mesh geometry={nodes.ScreenContent.geometry} material={materials.ScreenContent} position={[-0.121, 0.505, -0.103]} rotation={[-Math.PI, 0, -Math.PI]} />
-    </group>
+      </group>
+      </group>
   )
 }
 

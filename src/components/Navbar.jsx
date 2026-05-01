@@ -12,6 +12,7 @@ const Navbar = () => {
                 {/* DESKTOP NAV */}
                 <div className="hidden md:flex items-center gap-10 text-white/70">
                     <a href="#about" className="hover:text-white transition">About</a>
+                    <a href="#skills" className="hover:text-white transition">Skills</a>
                     <a href="#projects" className="hover:text-white transition">Projects</a>
                     <a href="#contact" className="hover:text-white transition">Contact</a>
                 </div>
@@ -36,6 +37,7 @@ const Navbar = () => {
             >
                 <div className="flex flex-col items-center py-6 gap-6 text-lg">
                     <a onClick={() => setOpen(false)} href="#about">About</a>
+                    <a onClick={() => setOpen(false)} href="#skills">Skills</a>
                     <a onClick={() => setOpen(false)} href="#projects">Projects</a>
                     <a onClick={() => setOpen(false)} href="#contact">Contact</a>
                 </div>
